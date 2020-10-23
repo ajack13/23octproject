@@ -5,9 +5,12 @@ if __name__ == "__main__":
 	import os
 	import json
 	import django
+	import logging
+	logger = logging.getLogger('interview')
 
 	os.environ.setdefault("DJANGO_SETTINGS_MODULE", "interview.settings.dev")
 	django.setup()
 
 	from api.v1.email import helpers
 	helpers.email_report()
+	logger.info('Automated email sent')
